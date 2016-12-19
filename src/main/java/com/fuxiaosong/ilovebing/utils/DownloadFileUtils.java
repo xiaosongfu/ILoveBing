@@ -20,8 +20,11 @@ public class DownloadFileUtils {
      * @param fileSavePath 本地保存路径，包不包含 / 都可以
      * @param fileSaveName 本地保存的文件名
      */
-    public static void downloadImage(String fileNetworkUrl, String fileSavePath, String fileSaveName) {
+    public static boolean downloadImage(String fileNetworkUrl, String fileSavePath, String fileSaveName) {
         LogUtils.i("开始下载文件");
+
+        //保存的结果，默认为成功
+        boolean downloadResult = true;
 
         try {
             URL url = new URL(fileNetworkUrl);
@@ -49,10 +52,17 @@ public class DownloadFileUtils {
             con.disconnect();
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            //保存失败
+            downloadResult = false;
         } catch (IOException e) {
             e.printStackTrace();
+            //保存失败
+            downloadResult = false;
         }
 
         LogUtils.i("下载并保存文件成功");
+
+        //返回保存结果
+        return downloadResult;
     }
 }

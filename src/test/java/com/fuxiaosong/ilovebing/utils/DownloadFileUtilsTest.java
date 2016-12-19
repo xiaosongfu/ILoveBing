@@ -10,7 +10,7 @@ import org.junit.Test;
 public class DownloadFileUtilsTest {
     @Test
     public void testDownloadImage(){
-        DownloadFileUtils.downloadImage("https://www.baidu.com/", "src/main/resources/public/bingimages", "baidutest1.txt");
-        DownloadFileUtils.downloadImage("https://www.baidu.com/", "src/main/resources/public/bingimages/", "baidutest2.txt");
+//        DownloadFileUtils.downloadImage("https://www.baidu.com/", "./", "baidutest1.txt");
+//        DownloadFileUtils.downloadImage("https://www.baidu.com/", "./", "baidutest2.txt");
     }
 }

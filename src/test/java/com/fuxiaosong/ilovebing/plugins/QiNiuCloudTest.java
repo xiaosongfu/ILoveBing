@@ -10,6 +10,6 @@ import org.junit.Test;
 public class QiNiuCloudTest {
     @Test
     public void testUploadToQiNiuCloud(){
-        QiNiuCloud.uploadToQiNiuCloud("src/main/resources/public/bingimages/20161215.jpg", "20161215.jpg");
+//        QiNiuCloud.uploadToQiNiuCloud("./20161216.jpg", "20161216.jpg");
     }
 }

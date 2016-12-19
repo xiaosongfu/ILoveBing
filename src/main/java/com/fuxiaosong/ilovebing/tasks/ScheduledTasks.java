@@ -29,7 +29,7 @@ public class ScheduledTasks {
     //Bing 桌面图片的网络请求地址
     private static final String BING_IMAGE_URL = "http://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1";
     //本地图片保存路径
-    private static final String IMAGE_ROOT_PATH = "src/main/resources/public/bingimages/";
+    private static final String IMAGE_ROOT_PATH = "./"; //"src/main/resources/public/bingimages/";
 
     /**
      * 1. 获取图片路径
@@ -51,10 +51,12 @@ public class ScheduledTasks {
         LogUtils.i("fileName: " + fileName);
 
         //2. 保存到本地
-        DownloadFileUtils.downloadImage(url, IMAGE_ROOT_PATH, fileName);
+        boolean downloadResult = DownloadFileUtils.downloadImage(url, IMAGE_ROOT_PATH, fileName);
 
-        //3. 上传到七牛云存储
-        QiNiuCloud.uploadToQiNiuCloud(IMAGE_ROOT_PATH + fileName, fileName);
+        //3. 保存到本地才可以继续上传到七牛云存储
+        if(downloadResult){
+            QiNiuCloud.uploadToQiNiuCloud(IMAGE_ROOT_PATH + fileName, fileName);
+        }
     }
 
     /**
