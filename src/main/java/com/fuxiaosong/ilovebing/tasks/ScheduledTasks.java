@@ -40,7 +40,8 @@ public class ScheduledTasks {
      * 定时任务请参考: http://blog.didispace.com/springbootscheduled/
      * 在线cron生成器：http://cron.qqe2.com/
      */
-    @Scheduled(cron="0 0 1 * * *")
+    @Scheduled(cron="0 0 1 * * *") // 每天凌晨1点钟
+//    @Scheduled(cron="0 0/1 * * * *") // 每一分钟
     public void fetchAndHandleImage() {
         //1. 获取图片信息
         Images images = fetchBingImage();
