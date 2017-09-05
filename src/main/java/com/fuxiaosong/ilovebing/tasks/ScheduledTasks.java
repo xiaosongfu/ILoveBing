@@ -28,6 +28,7 @@ import java.net.URL;
 public class ScheduledTasks {
     //Bing 桌面图片的网络请求地址
     private static final String BING_IMAGE_URL = "http://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1";
+    private static final String DOWNLOAD_BING_IMAGE_URL_PREFIX = "http://cn.bing.com";
     //本地图片保存路径
     private static final String IMAGE_ROOT_PATH = "./"; //"src/main/resources/public/bingimages/";
 
@@ -51,7 +52,7 @@ public class ScheduledTasks {
         LogUtils.i("fileName: " + fileName);
 
         //2. 保存到本地
-        boolean downloadResult = DownloadFileUtils.downloadImage(url, IMAGE_ROOT_PATH, fileName);
+        boolean downloadResult = DownloadFileUtils.downloadImage(DOWNLOAD_BING_IMAGE_URL_PREFIX + url, IMAGE_ROOT_PATH, fileName);
 
         //3. 保存到本地才可以继续上传到七牛云存储
         if(downloadResult){
